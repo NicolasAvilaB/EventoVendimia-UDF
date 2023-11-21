@@ -4,7 +4,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.State
 import com.wine.eventovendimia.presentation.login.actions.LoginUiState
 import com.wine.eventovendimia.ui.navigation.NavGo
-import com.wine.eventovendimia.ui.screen.login.componentstate.ErrorComponent
 import com.wine.eventovendimia.ui.screen.login.componentstate.ErrorState
 import com.wine.eventovendimia.ui.screen.login.componentstate.LoadingState
 
