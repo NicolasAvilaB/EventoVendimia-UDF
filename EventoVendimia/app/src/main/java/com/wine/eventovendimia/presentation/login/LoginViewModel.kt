@@ -16,6 +16,8 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.buffer
+import kotlinx.coroutines.flow.distinctUntilChanged
+import kotlinx.coroutines.flow.filterIsInstance
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 
@@ -27,13 +29,13 @@ internal class LoginViewModel(
 
     fun processUIntents(
         intentsUi: Flow<LoginUIntent>,
-        coroutineScope: CoroutineScope = viewModelScope
-    ) {
+    ): Flow<LoginUiState> =
         intentsUi.buffer()
             .onEach { uIntent ->
                 uIntent.handleUserIntent()
-            }.launchIn(coroutineScope)
-    }
+            }.filterIsInstance<LoginUiState>()
+            .distinctUntilChanged()
+
 
     private suspend fun LoginUIntent.handleUserIntent() {
         when (this) {
