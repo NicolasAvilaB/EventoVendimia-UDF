@@ -1,24 +1,24 @@
 package com.wine.eventovendimia.presentation.login
 
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
 import com.wine.eventovendimia.data.remote.WineRepository
 import com.wine.eventovendimia.presentation.login.actions.LoginUIntent
 import com.wine.eventovendimia.presentation.login.actions.LoginUIntent.SendUserLogin
+import com.wine.eventovendimia.presentation.login.actions.LoginUiEffect
 import com.wine.eventovendimia.presentation.login.actions.LoginUiEffect.InvalidUserPass
 import com.wine.eventovendimia.presentation.login.actions.LoginUiEffect.NavigateMenu
 import com.wine.eventovendimia.presentation.login.actions.LoginUiState
 import com.wine.eventovendimia.presentation.login.actions.LoginUiState.ErrorUiState
 import com.wine.eventovendimia.presentation.login.actions.LoginUiState.LoadingUiState
 import com.wine.eventovendimia.presentation.login.actions.LoginUiState.ViewUiState
-import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.buffer
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.filterIsInstance
-import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 
 internal class LoginViewModel(
@@ -26,6 +26,7 @@ internal class LoginViewModel(
 ) : ViewModel() {
     val defaultUiState = ViewUiState
     private val _uiState = MutableStateFlow<LoginUiState>(defaultUiState)
+    private val _uieffect = MutableSharedFlow<LoginUiEffect>()
 
     fun processUIntents(
         intentsUi: Flow<LoginUIntent>,
@@ -60,4 +61,6 @@ internal class LoginViewModel(
     }
 
     fun uiState(): StateFlow<LoginUiState> = _uiState
+    fun uiEffects(): SharedFlow<LoginUiEffect> = _uieffect
+
 }

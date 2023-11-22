@@ -1,34 +1,35 @@
 package com.wine.eventovendimia.ui.screen.login
 
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.State
 import com.wine.eventovendimia.presentation.login.actions.LoginUiState
-import com.wine.eventovendimia.ui.navigation.NavGo
-import com.wine.eventovendimia.ui.screen.login.componentstate.ErrorState
-import com.wine.eventovendimia.ui.screen.login.componentstate.LoadingState
+import com.wine.eventovendimia.ui.screen.login.componentState.ErrorState
+import com.wine.eventovendimia.ui.screen.login.componentState.LoadingState
+import com.wine.eventovendimia.ui.screen.models.LoginViewParams
 
 @Composable
-fun LoginScreen(
-    navGo: NavGo,
-    intentHandler: LoginIntentHandler,
-    uiState: State<LoginUiState>
+internal fun LoginScreen(
+    params: LoginViewParams
 ) {
-    LoginContent(
-        navGo = navGo,
-        intentHandler = intentHandler,
-        uiState = uiState
+    LoginState(
+        params = LoginViewParams(
+            navGo = params.navGo,
+            uiState = params.uiState,
+            uiEffects = params.uiEffects,
+            intentHandler = params.intentHandler
+        )
     )
 }
 
 @Composable
-private fun LoginContent(
-    navGo: NavGo,
-    intentHandler: LoginIntentHandler,
-    uiState: State<LoginUiState>
+private fun LoginState(
+    params: LoginViewParams
 ) {
-    when (uiState.value) {
+    when (params.uiState.value) {
         LoginUiState.ViewUiState -> {
-
+            LoginContent(
+                navGo = params.navGo,
+                uiEffects = params.uiEffects,
+            )
         }
 
         LoginUiState.LoadingUiState -> {
