@@ -24,18 +24,18 @@ import androidx.compose.ui.text.input.VisualTransformation
 @Composable
 internal fun Passwordnput(
     textPass: String,
-    errorInput: MutableState<String>,
-    textChangedInput: (String) -> Unit
+    textPassError: MutableState<String>,
+    textPassChanged: (String) -> Unit
 ) {
     var passwordVisibility by remember { mutableStateOf(false) }
     OutlinedTextField(
         value = textPass,
-        onValueChange = { textChangedInput(it) },
+        onValueChange = { textPassChanged(it) },
         modifier = Modifier.fillMaxWidth(),
         placeholder = { "Ingrese su Password..." },
         label = { "Password" },
         singleLine = true,
-        supportingText = { errorInput.value },
+        supportingText = { textPassError.value },
         maxLines = 1,
         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
         trailingIcon = {

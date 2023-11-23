@@ -28,6 +28,7 @@ private fun LoginState(
         LoginUiState.ViewUiState -> {
             LoginContent(
                 navGo = params.navGo,
+                intentHandler = params.intentHandler,
                 uiEffects = params.uiEffects,
             )
         }

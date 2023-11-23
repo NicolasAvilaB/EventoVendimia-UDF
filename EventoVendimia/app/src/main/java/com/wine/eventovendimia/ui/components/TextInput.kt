@@ -12,18 +12,18 @@ import androidx.compose.ui.text.input.KeyboardType
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 internal fun TextInput(
-    textPass: String,
-    errorInput: MutableState<String>,
-    textChangedInput: (String) -> Unit
+    textInput: String,
+    textInputError: MutableState<String>,
+    textInputChanged: (String) -> Unit
 ) {
     OutlinedTextField(
-        value = textPass,
-        onValueChange = { textChangedInput(it) },
+        value = textInput,
+        onValueChange = { textInputChanged(it) },
         modifier = Modifier.fillMaxWidth(),
         placeholder = { "Ingrese su usuario..." },
         label = { "Usuario / Email" },
         singleLine = true,
-        supportingText = { errorInput.value },
+        supportingText = { textInputError.value },
         maxLines = 1,
         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Ascii),
     )
