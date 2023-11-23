@@ -9,7 +9,7 @@ android {
 
     defaultConfig {
         applicationId = "com.wine.eventovendimia"
-        minSdk = 26
+        minSdk = 24
         targetSdk = 33
         versionCode = 1
         versionName = "1.0"
@@ -58,7 +58,7 @@ dependencies {
     implementation("com.google.accompanist:accompanist-navigation-animation:0.29.0-alpha")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.9")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.2")
-    implementation("androidx.activity:activity-compose:1.8.0")
+    implementation("androidx.activity:activity-compose:1.7.0")
     implementation("androidx.compose.material:material-icons-extended:1.1.1")
     implementation("com.google.code.gson:gson:2.8.7")
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
