@@ -2,8 +2,8 @@ package com.wine.eventovendimia.ui.screen.login
 
 import androidx.compose.runtime.Composable
 import com.wine.eventovendimia.presentation.login.actions.LoginUiState
-import com.wine.eventovendimia.ui.screen.login.componentState.ErrorState
-import com.wine.eventovendimia.ui.screen.login.componentState.LoadingState
+import com.wine.eventovendimia.ui.screen.login.stateComponent.ErrorState
+import com.wine.eventovendimia.ui.screen.login.stateComponent.LoadingState
 import com.wine.eventovendimia.ui.screen.models.LoginViewParams
 
 @Composable

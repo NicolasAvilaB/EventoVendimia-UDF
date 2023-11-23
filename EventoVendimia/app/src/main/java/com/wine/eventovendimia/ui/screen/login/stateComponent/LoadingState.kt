@@ -1,4 +1,4 @@
-package com.wine.eventovendimia.ui.screen.login.componentState
+package com.wine.eventovendimia.ui.screen.login.stateComponent
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
